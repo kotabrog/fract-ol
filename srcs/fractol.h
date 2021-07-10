@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 22:16:38 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/10 23:53:15 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@
 # define KEY_UP 65362
 # define KEY_RIGHT 65363
 # define KEY_DOWN 65364
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 # define SLIDE_STEP 10
 # define SCREEN_X 500
 # define SCREEN_Y 500
+# define ZOOMIN_RATE 0.8
+# define ZOOMOUT_RATE 1.2
 
 typedef struct s_vec {
 	double	x;
@@ -40,7 +44,6 @@ typedef struct s_vec {
 }				t_vec;
 
 typedef struct s_screen {
-	t_vec	center;
 	t_vec	left_top;
 	t_vec	step;
 	double	width;
@@ -71,8 +74,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	put_image_to_window(t_vars *vars);
 void	set_all_mlx_hook(t_vars *vars);
 
+void	clear_image(t_vars *vars);
+
 void	init_screen(t_vars *vars);
 void	slide_screen(t_vars *vars, int x, int y);
+void	zoom_screen(t_vars *vars, int x, int y, double r);
 void	get_coordinates(t_vars *vars, int x, int y, t_vec *dst);
 
 void	vec_set(t_vec *vec, double x, double y);
