@@ -6,14 +6,18 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/10 14:21:40 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/10 17:47:40 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCDIR	= ./srcs/
 SRCNAME	=	main.c\
+			error.c\
 			minilibx_control1.c\
+			fractol_square.c\
 			color.c\
+			trgb_to_int.c\
+			trgb_to_one.c\
 			mini_libft1.c
 
 SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))

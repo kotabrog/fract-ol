@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   fractol_square.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 13:34:41 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 17:08:19 by ksuzuki          ###   ########.fr       */
+/*   Created: 2021/07/10 17:27:14 by ksuzuki           #+#    #+#             */
+/*   Updated: 2021/07/10 17:37:54 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	create_trgb(int t, int r, int g, int b)
+int	put_simple_square(t_vars *vars)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+	int	color;
+	int	point[2];
 
-int	color_mod_add(int trgb, int value)
-{
-	int trgb_array[3];
-
-	trgb_array[0] = (trgb_to_r_int(trgb) + value) % 256;
-	trgb_array[1] = (trgb_to_g_int(trgb) + value) % 256;
-	trgb_array[2] = (trgb_to_b_int(trgb) + value) % 256;
-	return (create_trgb(0, trgb_array[0], trgb_array[1], trgb_array[3]));
+	color = vars->base_color;
+	point[0] = 100;
+	while (point[0] < 400)
+	{
+		point[1] = 100;
+		while (point[1] < 400)
+		{
+			my_mlx_pixel_put(&(vars->data), point[0], point[1], color);
+			++point[1];
+		}
+		++point[0];
+	}
+	return (SUCCESS);
 }
