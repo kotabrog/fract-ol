@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 14:15:32 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/10 16:55:32 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ typedef struct s_data {
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
-	int		x;
-	int		y;
+	int		endian;
 }				t_data;
 
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
-	t_data	*data;
+	t_data	data;
 	int		x;
 	int		y;
 }				t_vars;
