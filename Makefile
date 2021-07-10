@@ -6,7 +6,7 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/10 17:47:40 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/10 22:17:19 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ SRCDIR	= ./srcs/
 SRCNAME	=	main.c\
 			error.c\
 			minilibx_control1.c\
+			screen.c\
 			fractol_square.c\
+			vec_utility1.c\
 			color.c\
 			trgb_to_int.c\
 			trgb_to_one.c\

@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 13:07:48 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 17:43:00 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/10 22:22:55 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,26 @@ void	put_image_to_window(t_vars *vars)
 
 static int	control_key_code(int keycode, t_vars *vars)
 {
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
 	if (keycode == KEY_ESC)
 		exit(SUCCESS);
 	if (keycode == KEY_RIGHT)
+		x = SLIDE_STEP;
+	if (keycode == KEY_LEFT)
+		x = -SLIDE_STEP;
+	if (keycode == KEY_DOWN)
+		y = SLIDE_STEP;
+	if (keycode == KEY_UP)
+		y = -SLIDE_STEP;
+	if (keycode == KEY_RIGHT || keycode == KEY_LEFT || \
+		keycode == KEY_DOWN || keycode == KEY_UP)
 	{
 		vars->base_color = color_mod_add(vars->base_color, 10);
+		slide_screen(vars, x, y);
 		mlx_clear_window(vars->mlx, vars->win);
 		clear_image(vars);
 		put_image_to_window(vars);

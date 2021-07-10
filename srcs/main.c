@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:15:28 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 17:43:23 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/10 22:16:22 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@ static void	vars_data_init(t_vars *vars)
 
 static void	vars_init(t_vars *vars)
 {
-	vars->x = 500;
-	vars->y = 500;
+	vars->x = SCREEN_X;
+	vars->y = SCREEN_Y;
 	vars->base_color = create_trgb(0, 100, 0, 0);
+	init_screen(vars);
 	vars->func = put_simple_square;
 	vars->figure_name = "square";
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
 		error_put("fail mlx_init");
-	vars->win = mlx_new_window(vars->mlx, vars->x, vars->y, "Hello world!");
+	vars->win = mlx_new_window(vars->mlx, vars->x, vars->y, vars->figure_name);
 	if (vars->win == NULL)
 		error_put("fail mlx_new_window");
 	vars_data_init(vars);

@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trgb_to_one.c                                      :+:      :+:    :+:   */
+/*   vec_utility1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 19:17:16 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 21:14:47 by ksuzuki          ###   ########.fr       */
+/*   Created: 2021/07/10 21:30:10 by ksuzuki           #+#    #+#             */
+/*   Updated: 2021/07/10 22:00:50 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	trgb_to_t(int trgb)
+void	vec_set(t_vec *vec, double x, double y)
 {
-	return (trgb & (0xFF << 24));
+	vec->x = x;
+	vec->y = y;
 }
 
-int	trgb_to_r(int trgb)
+void	vec_copy(t_vec *dst, t_vec *src)
 {
-	return (trgb & (0xFF << 16));
+	vec_set(dst, src->x, src->y);
 }
 
-int	trgb_to_g(int trgb)
+void	vec_add(t_vec *vec1, t_vec *vec2, t_vec *vec_dst)
 {
-	return (trgb & (0xFF << 8));
+	vec_set(vec_dst, vec1->x + vec2->x, vec1->y + vec2->y);
 }
 
-int	trgb_to_b(int trgb)
+void	vec_sub(t_vec *vec1, t_vec *vec2, t_vec *vec_dst)
 {
-	return (trgb & 0xFF);
+	vec_set(vec_dst, vec1->x - vec2->x, vec1->y - vec2->y);
 }
