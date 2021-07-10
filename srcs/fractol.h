@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 13:35:18 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/10 14:15:32 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 # define TRUE 1
 # define FALSE 0

@@ -6,7 +6,7 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/10 13:52:14 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/10 14:21:40 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRCNAME	=	main.c\
 SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))
 OBJS	= $(SRCS:.c=.o)
 
-INCLUDE	= -I/usr/include
+INCLUDE	= -I/usr/include -I./minilibx-linux
 NAME	= fractol
-LDFLAGS	= libmlx_Linux.a -L/usr/lib -lXext -lX11 -lm
+LDFLAGS	= ./minilibx-linux/libmlx_Linux.a -L/usr/lib -lXext -lX11 -lm
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
@@ -29,15 +29,20 @@ RM		= rm -f
 all		:	$(NAME)
 
 .c.o	:
-			$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
+	if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.c=.o)
 
 $(NAME)	:	$(OBJS)
+	if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
+	$(MAKE) -C ./minilibx-linux
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 sani	:	$(OBJS)
+	if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
 	$(CC) $(CFLAGS) -fsanitize=address $(OBJS) $(LDFLAGS) -o $(NAME)
 
 bonus	: $(OBJS)
+	if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 clean	:
