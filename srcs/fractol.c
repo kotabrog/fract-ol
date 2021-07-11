@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_mandelbrot.c                               :+:      :+:    :+:   */
+/*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 11:25:50 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 11:40:29 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 11:59:46 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,28 @@ int	fractal_mandelbrot(t_vars *vars, t_vec *vec)
 	while (!stop_iteration(x, y, i))
 	{
 		update_value(&x, &y, vec);
+		++i;
+	}
+	if (i >= MAX_ITERATION)
+		return (0);
+	return (i);
+}
+
+int	fractal_julia(t_vars *vars, t_vec *vec)
+{
+	double	x;
+	double	y;
+	int		i;
+	t_vec	c;
+
+	vars->x = vars->x;
+	vec_set(&c, 0.3, 0.2);
+	i = 0;
+	x = vec->x;
+	y = vec->y;
+	while (!stop_iteration(x, y, i))
+	{
+		update_value(&x, &y, &c);
 		++i;
 	}
 	if (i >= MAX_ITERATION)
