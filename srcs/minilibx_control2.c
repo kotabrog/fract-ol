@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 23:00:19 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 16:42:22 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 17:24:54 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,51 @@ static int	set_arrow_key(int *x, int *y, int keycode)
 			keycode == KEY_DOWN || keycode == KEY_UP);
 }
 
+static int	set_number_key(int *color, int keycode)
+{
+	if (keycode < KEY_ZERO || KEY_ZERO + 9 < keycode)
+		return (FALSE);
+	if (keycode == KEY_ZERO)
+		*color = create_trgb(0, 100, 0, 0);
+	else if (keycode == KEY_ZERO + 1)
+		*color = create_trgb(0, 0, 100, 0);
+	else if (keycode == KEY_ZERO + 2)
+		*color = create_trgb(0, 0, 0, 100);
+	else if (keycode == KEY_ZERO + 3)
+		*color = create_trgb(0, 100, 100, 100);
+	else if (keycode == KEY_ZERO + 4)
+		*color = create_trgb(0, 20, 50, 0);
+	else if (keycode == KEY_ZERO + 5)
+		*color = create_trgb(0, 30, 70, 150);
+	else if (keycode == KEY_ZERO + 6)
+		*color = create_trgb(0, 200, 10, 40);
+	else if (keycode == KEY_ZERO + 7)
+		*color = create_trgb(0, 50, 150, 20);
+	else if (keycode == KEY_ZERO + 8)
+		*color = create_trgb(0, 30, 200, 10);
+	else if (keycode == KEY_ZERO + 9)
+		*color = create_trgb(0, 20, 0, 150);
+	return (TRUE);
+}
+
 static int	control_key_code(int keycode, t_vars *vars)
 {
 	int	x;
 	int	y;
+	int	color;
 
 	if (keycode == KEY_ESC)
 		exit(SUCCESS);
-	if (set_arrow_key(&x, &y, keycode))
+	else if (set_arrow_key(&x, &y, keycode))
 	{
 		slide_screen(vars, x, y);
+		mlx_clear_window(vars->mlx, vars->win);
+		clear_image(vars);
+		put_image_to_window(vars);
+	}
+	else if (set_number_key(&color, keycode))
+	{
+		vars->base_color = color;
 		mlx_clear_window(vars->mlx, vars->win);
 		clear_image(vars);
 		put_image_to_window(vars);

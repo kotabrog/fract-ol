@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 11:07:37 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 16:46:11 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 17:13:01 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	draw_image(t_vars *vars)
 		{
 			get_coordinates(vars, point[0], point[1], &vec);
 			n = vars->func(vars, &vec);
-			color = create_div_color(vars->base_color, vars->max_iter, n);
+			color = color_mod_add(vars->base_color, n * 10);
 			if (n < 0)
 				return (ERROR);
 			if (n > 0)
