@@ -1,6 +1,6 @@
-# pipex
+# fract-ol
 
-![img](https://github.com/kotabrog/ft_mini_ls/blob/main/img/sample.png)
+![img](https://github.com/kotabrog/fract-ol/blob/main/img/sample.png)
 
 ## Overview
 
@@ -43,7 +43,7 @@ example:
 
 ### j (julia)
 
-![img](https://github.com/kotabrog/ft_mini_ls/blob/main/img/sample.png)
+![img](https://github.com/kotabrog/fract-ol/blob/main/img/julia.png)
 
 ```
 param: [a(double)] [b(double)]
