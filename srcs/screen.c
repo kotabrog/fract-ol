@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:13:25 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 11:47:33 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 12:19:06 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	zoom_screen(t_vars *vars, int x, int y, double r)
 	t_vec		vec;
 
 	screen = &(vars->screen);
-	if (r < 1 && (screen->width < 1e-4 || screen->height < 1e-4))
+	if (r < 1 && (screen->width < 1e-15 || screen->height < 1e-15))
 		return ;
 	get_coordinates(vars, x, y, &vec);
 	vec_set(&(screen->left_top), \

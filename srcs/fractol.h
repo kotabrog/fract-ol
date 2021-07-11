@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 11:58:39 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 14:47:39 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <math.h>
 
 # include "../minilibx-linux/mlx.h"
 
@@ -74,7 +75,11 @@ typedef struct s_vars {
 	int			(*func)(struct s_vars *, t_vec *);
 	char		*figure_name;
 	t_screen	screen;
+	double		*param;
 }				t_vars;
+
+void	arg_parse(t_vars *vars, int argc, char **argv);
+int		set_number(char *s, double *v);
 
 int		fractal_square(t_vars *vars, t_vec *vec);
 int		fractal_mandelbrot(t_vars *vars, t_vec *vec);
@@ -111,8 +116,12 @@ int		trgb_to_b(int trgb);
 
 int		error_put(char *str);
 
+int		ft_malloc(void *pointer, size_t type_size, size_t n);
+int		ft_free(void *pointer);
+
 size_t	ft_strlen(const char *c);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
+int		ft_isdigit(int c);
 
 #endif

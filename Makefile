@@ -6,12 +6,14 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/11 11:55:55 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/11 14:54:56 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCDIR	= ./srcs/
 SRCNAME	=	main.c\
+			arg_parse.c\
+			set_number.c\
 			error.c\
 			minilibx_control1.c\
 			minilibx_control2.c\
@@ -23,6 +25,7 @@ SRCNAME	=	main.c\
 			color.c\
 			trgb_to_int.c\
 			trgb_to_one.c\
+			ft_malloc.c\
 			mini_libft1.c
 
 SRCS	= $(addprefix $(SRCDIR), $(SRCNAME))
