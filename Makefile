@@ -6,7 +6,7 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/11 14:54:56 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/11 18:17:40 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCNAME	=	main.c\
 			draw.c\
 			fractol_square.c\
 			fractol.c\
+			fractol2.c\
 			vec_utility1.c\
 			color.c\
 			trgb_to_int.c\

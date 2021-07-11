@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 17:15:58 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 18:18:07 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ typedef struct s_vars {
 void	arg_parse(t_vars *vars, int argc, char **argv);
 int		set_number(char *s, double *v);
 
+int		stop_iteration(double x, double y, int iter, int max_iter);
 int		fractal_square(t_vars *vars, t_vec *vec);
 int		fractal_mandelbrot(t_vars *vars, t_vec *vec);
 int		fractal_julia(t_vars *vars, t_vec *vec);
+int		fractal_mandelbrot2(t_vars *vars, t_vec *vec);
+int		fractal_julia2(t_vars *vars, t_vec *vec);
 
 void	clear_image(t_vars *vars);
 int		draw_image(t_vars *vars);

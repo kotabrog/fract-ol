@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   fractol2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 11:25:50 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 17:34:52 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 18:41:43 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	stop_iteration(double x, double y, int iter, int max_iter)
+static void	update_value(double *x, double *y, int power, t_vec *vec)
 {
-	return (iter >= max_iter || x * x + y * y > 4);
-}
-
-static void	update_value(double *x, double *y, t_vec *vec)
-{
+	double	rx;
+	double	ry;
 	double	temp;
 
-	temp = *x;
-	*x = *x * *x - *y * *y + vec->x;
-	*y = 2 * temp * *y + vec->y;
+	rx = *x;
+	ry = *y;
+	while (--power)
+	{
+		temp = rx;
+		rx = rx * *x - ry * *y;
+		ry = temp * *y + ry * *x;
+	}
+	*x = rx + vec->x;
+	*y = ry + vec->y;
 }
 
-int	fractal_mandelbrot(t_vars *vars, t_vec *vec)
+int	fractal_mandelbrot2(t_vars *vars, t_vec *vec)
 {
 	double	x;
 	double	y;
@@ -38,7 +42,7 @@ int	fractal_mandelbrot(t_vars *vars, t_vec *vec)
 	y = 0;
 	while (!stop_iteration(x, y, i, vars->max_iter))
 	{
-		update_value(&x, &y, vec);
+		update_value(&x, &y, (int)round(vars->param[2]), vec);
 		++i;
 	}
 	if (i >= vars->max_iter)
@@ -46,7 +50,7 @@ int	fractal_mandelbrot(t_vars *vars, t_vec *vec)
 	return (i);
 }
 
-int	fractal_julia(t_vars *vars, t_vec *vec)
+int	fractal_julia2(t_vars *vars, t_vec *vec)
 {
 	double	x;
 	double	y;
@@ -60,7 +64,7 @@ int	fractal_julia(t_vars *vars, t_vec *vec)
 	y = vec->y;
 	while (!stop_iteration(x, y, i, vars->max_iter))
 	{
-		update_value(&x, &y, &c);
+		update_value(&x, &y, (int)round(vars->param[2]), &c);
 		++i;
 	}
 	if (i >= vars->max_iter)
