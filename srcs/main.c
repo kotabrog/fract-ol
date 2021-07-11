@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:15:28 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 22:16:22 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 11:41:57 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ static void	vars_init(t_vars *vars)
 	vars->y = SCREEN_Y;
 	vars->base_color = create_trgb(0, 100, 0, 0);
 	init_screen(vars);
-	vars->func = put_simple_square;
-	vars->figure_name = "square";
+	vars->func = fractal_mandelbrot;
+	vars->figure_name = "mandelbrot";
+	// vars->func = fractal_square;
+	// vars->figure_name = "square";
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
 		error_put("fail mlx_init");

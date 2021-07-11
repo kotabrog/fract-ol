@@ -6,7 +6,7 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/10 23:14:10 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/11 11:41:27 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRCNAME	=	main.c\
 			minilibx_control1.c\
 			minilibx_control2.c\
 			screen.c\
+			draw.c\
 			fractol_square.c\
+			fractol_mandelbrot.c\
 			vec_utility1.c\
 			color.c\
 			trgb_to_int.c\

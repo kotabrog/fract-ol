@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 23:53:15 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 11:45:02 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,17 @@
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-# define SLIDE_STEP 10
+# define SLIDE_STEP 20
 # define SCREEN_X 500
 # define SCREEN_Y 500
 # define ZOOMIN_RATE 0.8
 # define ZOOMOUT_RATE 1.2
+
+# define MAX_ITERATION 100
+# define STOP_DIVERGENCE 2
+
+# define START_WIDTH 4
+# define START_HEIGHT 4
 
 typedef struct s_vec {
 	double	x;
@@ -65,16 +71,20 @@ typedef struct s_vars {
 	int			x;
 	int			y;
 	int			base_color;
-	int			(*func)(struct s_vars *);
+	int			(*func)(struct s_vars *, t_vec *);
 	char		*figure_name;
 	t_screen	screen;
 }				t_vars;
 
+int		fractal_square(t_vars *vars, t_vec *vec);
+int		fractal_mandelbrot(t_vars *vars, t_vec *vec);
+
+void	clear_image(t_vars *vars);
+int		draw_image(t_vars *vars);
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	put_image_to_window(t_vars *vars);
 void	set_all_mlx_hook(t_vars *vars);
-
-void	clear_image(t_vars *vars);
 
 void	init_screen(t_vars *vars);
 void	slide_screen(t_vars *vars, int x, int y);
@@ -103,7 +113,5 @@ int		error_put(char *str);
 size_t	ft_strlen(const char *c);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-
-int		put_simple_square(t_vars *vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:13:25 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 00:22:59 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 11:47:33 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	init_screen(t_vars *vars)
 {
-	vars->screen.width = vars->x;
-	vars->screen.height = vars->y;
-	vec_set(&(vars->screen.left_top), -vars->x / 2, -vars->y / 2);
-	vec_set(&(vars->screen.step), vars->x / vars->x, vars->y / vars->y);
+	t_screen	*scr;
+
+	scr = &(vars->screen);
+	scr->width = START_WIDTH;
+	scr->height = START_HEIGHT;
+	vec_set(&(scr->left_top), -scr->width / 2, -scr->height / 2);
+	vec_set(&(scr->step), scr->width / vars->x, scr->height / vars->y);
 }
 
 void	slide_screen(t_vars *vars, int x, int y)

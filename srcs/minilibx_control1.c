@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 13:07:48 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 23:15:09 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 11:16:38 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	put_image_to_window(t_vars *vars)
 {
-	if (vars->func(vars))
+	if (draw_image(vars))
 		error_put("An error occurred while creating a shape.");
 	mlx_put_image_to_window(vars->mlx, vars->win, \
 						vars->data.img, 0, 0);
-}
-
-void	clear_image(t_vars *vars)
-{
-	int	point[2];
-
-	point[0] = 0;
-	while (point[0] < vars->x)
-	{
-		point[1] = 0;
-		while (point[1] < vars->y)
-		{
-			my_mlx_pixel_put(&(vars->data), point[0], point[1], 0);
-			++point[1];
-		}
-		++point[0];
-	}
 }
