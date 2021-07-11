@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 23:00:19 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/10 23:55:42 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:42:22 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	control_key_code(int keycode, t_vars *vars)
 		exit(SUCCESS);
 	if (set_arrow_key(&x, &y, keycode))
 	{
-		vars->base_color = color_mod_add(vars->base_color, 10);
 		slide_screen(vars, x, y);
 		mlx_clear_window(vars->mlx, vars->win);
 		clear_image(vars);
@@ -57,7 +56,6 @@ static int	control_mouse_hook(int button, int x, int y, t_vars *vars)
 		rate = ZOOMOUT_RATE;
 	if (rate != 0)
 	{
-		vars->base_color = color_mod_add(vars->base_color, 10);
 		zoom_screen(vars, x, y, rate);
 		mlx_clear_window(vars->mlx, vars->win);
 		clear_image(vars);

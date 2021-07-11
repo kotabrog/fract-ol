@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:13:25 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 12:19:06 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:59:46 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ void	zoom_screen(t_vars *vars, int x, int y, double r)
 	vec_set(&(screen->step), \
 			screen->width / vars->x, \
 			screen->height / vars->y);
+	if (r > 1)
+		vars->max_iter -= ZOOM_ITER_PLUS;
+	else
+		vars->max_iter += ZOOM_ITER_PLUS;
+	if (vars->max_iter <= 10)
+		vars->max_iter = 10;
 }
 
 void	get_coordinates(t_vars *vars, int x, int y, t_vec *dst)

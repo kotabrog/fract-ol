@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:16:07 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 14:47:39 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:59:35 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@
 # define ZOOMIN_RATE 0.8
 # define ZOOMOUT_RATE 1.2
 
-# define MAX_ITERATION 100
+# define MAX_ITERATION_INIT 100
+# define ZOOM_ITER_PLUS 4
 # define STOP_DIVERGENCE 2
 
 # define START_WIDTH 4
@@ -76,6 +77,7 @@ typedef struct s_vars {
 	char		*figure_name;
 	t_screen	screen;
 	double		*param;
+	int			max_iter;
 }				t_vars;
 
 void	arg_parse(t_vars *vars, int argc, char **argv);
@@ -104,6 +106,7 @@ void	vec_sub(t_vec *vec1, t_vec *vec2, t_vec *vec_dst);
 
 int		create_trgb(int t, int r, int g, int b);
 int		color_mod_add(int trgb, int value);
+int		create_div_color(int base, int max_div, int num);
 
 int		trgb_to_t_int(int trgb);
 int		trgb_to_r_int(int trgb);

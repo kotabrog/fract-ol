@@ -6,15 +6,15 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 11:25:50 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 16:16:46 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:47:34 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	stop_iteration(double x, double y, int iter)
+static int	stop_iteration(double x, double y, int iter, int max_iter)
 {
-	return (iter >= MAX_ITERATION || x * x + y * y > 4);
+	return (iter >= max_iter || x * x + y * y > 4);
 }
 
 static void	update_value(double *x, double *y, t_vec *vec)
@@ -36,12 +36,12 @@ int	fractal_mandelbrot(t_vars *vars, t_vec *vec)
 	i = 0;
 	x = 0;
 	y = 0;
-	while (!stop_iteration(x, y, i))
+	while (!stop_iteration(x, y, i, vars->max_iter))
 	{
 		update_value(&x, &y, vec);
 		++i;
 	}
-	if (i >= MAX_ITERATION)
+	if (i >= vars->max_iter)
 		return (0);
 	return (i);
 }
@@ -58,12 +58,12 @@ int	fractal_julia(t_vars *vars, t_vec *vec)
 	i = 0;
 	x = vec->x;
 	y = vec->y;
-	while (!stop_iteration(x, y, i))
+	while (!stop_iteration(x, y, i, vars->max_iter))
 	{
 		update_value(&x, &y, &c);
 		++i;
 	}
-	if (i >= MAX_ITERATION)
+	if (i >= vars->max_iter)
 		return (0);
 	return (i);
 }

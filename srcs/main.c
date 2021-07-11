@@ -6,7 +6,7 @@
 /*   By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 11:15:28 by ksuzuki           #+#    #+#             */
-/*   Updated: 2021/07/11 14:05:39 by ksuzuki          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:45:37 by ksuzuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	vars_init(t_vars *vars)
 	vars->x = SCREEN_X;
 	vars->y = SCREEN_Y;
 	vars->base_color = create_trgb(0, 100, 0, 0);
+	vars->max_iter = MAX_ITERATION_INIT;
 	init_screen(vars);
 	vars->mlx = mlx_init();
 	if (vars->mlx == NULL)
