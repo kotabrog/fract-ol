@@ -6,7 +6,7 @@
 #    By: ksuzuki <ksuzuki@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 10:09:42 by ksuzuki           #+#    #+#              #
-#    Updated: 2021/07/11 18:17:40 by ksuzuki          ###   ########.fr        #
+#    Updated: 2021/07/11 19:04:12 by ksuzuki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,10 +54,6 @@ sani	:	$(OBJS)
 	if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
 	$(CC) $(CFLAGS) -fsanitize=address $(OBJS) $(LDFLAGS) -o $(NAME)
 
-bonus	: $(OBJS)
-	if [ ! -d ./minilibx-linux ]; then git clone https://github.com/42Paris/minilibx-linux.git; fi
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
-
 clean	:
 	$(RM) $(OBJS)
 
@@ -66,4 +62,4 @@ fclean	:
 
 re		: fclean all
 
-.PHONY: all re fclean clean bonus
+.PHONY: all re fclean clean
